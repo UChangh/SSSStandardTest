@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">StandardTest</string>
+    <string name="floating_action_button_main">Floating Action Button</string>
+    <string name="account_id">ID</string>
+    <string name="all">전체</string>
+    <string name="music">음악</string>
+    <string name="podcast">전화</string>
+    <string name="event_name">!!!Event!!!</string>
+    <string name="playlist_name">내 플레이리스트</string>
+</resources>
