@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.standardtest.databinding.MusicAlbumsLayoutBinding
-import com.example.standardtest.dataclasses.Mixs
+import com.example.standardtest.dataclasses.MixNRecommend
 
-class MixsNRecommendsRecyclerViewAdapter(private val recommends:Array<Mixs>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MixNRecommendsRecyclerViewAdapter(private val recommends:Array<MixNRecommend>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class Holder(binding: MusicAlbumsLayoutBinding):
         RecyclerView.ViewHolder(binding.root) {
             var image = binding.albumImage

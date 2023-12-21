@@ -8,11 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.standardtest.databinding.ActivityMainBinding
+import com.example.standardtest.objects.Adapters.m
 import com.example.standardtest.objects.Adapters.mmp
 import com.example.standardtest.objects.Adapters.mnr
 import com.example.standardtest.objects.Adapters.mp
 import com.example.standardtest.objects.Uris
-import com.example.standardtest.recycleradapters.MixsNRecommendsRecyclerViewAdapter
+import com.example.standardtest.recycleradapters.MixNRecommendsRecyclerViewAdapter
+import com.example.standardtest.recycleradapters.MixsRecyclerViewAdapter
 import com.example.standardtest.recycleradapters.MyMusicsPlaylistsRecyclerViewAdapter
 import com.example.standardtest.recycleradapters.MyPlaylistsRecyclerViewAdapter
 
@@ -25,13 +27,20 @@ class MainActivity : AppCompatActivity() {
         val viewMain = binding.root
         setContentView(viewMain)
 
+        // 외부 Recycler View 연결
+//        binding.outerRecycler.apply {
+//            adapter = OuterRecyclerConnectAdapter()
+//            layoutManager = LinearLayoutManager(context)
+//            setHasFixedSize(true)
+//        }
+
         // Playlist 메뉴 구현 및 Recycler View 연결
         val recyclerViewMyPlaylists = MyPlaylistsRecyclerViewAdapter(mp.dataset)  // 어댑터 만들기(플레이리스트에 들어갈 내용들의 집합)
         val recyclerViewMyPlaylist = binding.recyclerPlaylists      // recycler view 만들기, 바인딩으로 연결할 데이터 = RecyclerView의 ID
         recyclerViewMyPlaylist.adapter = recyclerViewMyPlaylists                        // rv = 어댑터 연결
 
         // Mix & Recommends 메뉴 구현 및 Recycler View 연결
-        val recyclerViewMixsNRecommends = MixsNRecommendsRecyclerViewAdapter(mnr.dataset)
+        val recyclerViewMixsNRecommends = MixNRecommendsRecyclerViewAdapter(mnr.dataset)
         val recyclerViewMixNRecommend = binding.recyclerMixNRecommend
         recyclerViewMixNRecommend.adapter = recyclerViewMixsNRecommends
 
@@ -39,6 +48,11 @@ class MainActivity : AppCompatActivity() {
         val rvMyMusicsPlaylists = MyMusicsPlaylistsRecyclerViewAdapter(mmp.dataset)
         val rvMyMusics = binding.recyclerMyMusics
         rvMyMusics.adapter = rvMyMusicsPlaylists
+
+        // Mixs 메뉴 구현 및 Recycler View 연결
+        val rvMixslists = MixsRecyclerViewAdapter(m.dataset)
+        val rvMixs = binding.recyclerMix
+        rvMixs.adapter = rvMixslists
     }
 
 
@@ -87,74 +101,6 @@ class MainActivity : AppCompatActivity() {
 //        findViewById<Toolbar>(R.id.toolbar).apply {
 //            setSupportActionBar(this)
 //        }
-//        loadVideo(R.id.video_1, VideoList.get(0))
-//        loadVideo(R.id.video_2, VideoList.get(1))
-//        loadVideo(R.id.video_3, VideoList.get(2))
-//        loadVideo(R.id.video_4, VideoList.get(3))
-//        loadVideo(R.id.video_5, VideoList.get(4))
-//    }
-
-//    private fun loadVideo(layoutId: Int, video: Video) {
-//        findViewById<ViewGroup>(layoutId)?.apply {
-//            with(video) {
-//                findViewById<ImageView>(R.id.main_image).also {
-//                    Glide.with(it).load(thumbnail).into(it)
-//                }
-//
-//                findViewById<TextView>(R.id.channel_name).apply {
-//                    text = channelTitle
-//                }
-//
-//                findViewById<TextView>(R.id.title).apply {
-//                    text = title
-//                }
-//
-//                findViewById<ImageView>(R.id.logo).apply {
-//                    setImageResource(R.drawable.haelin)
-//                }
-//            }
-//        }
-//    }
-//
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.menu_main, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.action_settings -> {
-//                val intent = Intent(this, SettingActivity::class.java)
-//                startActivity(intent)
-//                true
-//            }
-//
-//            R.id.action_dialog -> {
-//                showDialog()
-//                true
-//            }
-//
-//            R.id.action_call -> {
-//                call()
-//                true
-//            }
-//
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
-//
-//    private fun showDialog() {
-//        val dialog = AlertDialog.Builder(this)
-//            .setTitle("Dialog Title")
-//            .setMessage("This is a dialog.")
-//            .setPositiveButton("OK", null)
-//            .create()
-//
-//        dialog.show()
-//    }
-//
-//
 //    private fun call() {
 //        // 권한 확인
 //        if (ContextCompat.checkSelfPermission(

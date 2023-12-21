@@ -16,7 +16,7 @@ class MyMusicsPlaylists {
         ),
         MyMusics(
             R.drawable.sound_mixer_01,
-            "맞춤 : 추억에 잠길 수 있는 곡"
+            "추억에 잠길 수 있는 곡"
         ),
         MyMusics(
             R.drawable.sound_bars_01,
