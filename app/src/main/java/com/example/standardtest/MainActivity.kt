@@ -27,22 +27,15 @@ class MainActivity : AppCompatActivity() {
         val viewMain = binding.root
         setContentView(viewMain)
 
-        // 외부 Recycler View 연결
-//        binding.outerRecycler.apply {
-//            adapter = OuterRecyclerConnectAdapter()
-//            layoutManager = LinearLayoutManager(context)
-//            setHasFixedSize(true)
-//        }
-
         // Playlist 메뉴 구현 및 Recycler View 연결
         val recyclerViewMyPlaylists = MyPlaylistsRecyclerViewAdapter(mp.dataset)  // 어댑터 만들기(플레이리스트에 들어갈 내용들의 집합)
         val recyclerViewMyPlaylist = binding.recyclerPlaylists      // recycler view 만들기, 바인딩으로 연결할 데이터 = RecyclerView의 ID
         recyclerViewMyPlaylist.adapter = recyclerViewMyPlaylists                        // rv = 어댑터 연결
 
         // Mix & Recommends 메뉴 구현 및 Recycler View 연결
-        val recyclerViewMixsNRecommends = MixNRecommendsRecyclerViewAdapter(mnr.dataset)
+        val recyclerViewMixNRecommends = MixNRecommendsRecyclerViewAdapter(mnr.dataset)
         val recyclerViewMixNRecommend = binding.recyclerMixNRecommend
-        recyclerViewMixNRecommend.adapter = recyclerViewMixsNRecommends
+        recyclerViewMixNRecommend.adapter = recyclerViewMixNRecommends
 
         // My Musics(나만의 음악) 메뉴 구현 및 Recycler View 연결
         val rvMyMusicsPlaylists = MyMusicsPlaylistsRecyclerViewAdapter(mmp.dataset)
