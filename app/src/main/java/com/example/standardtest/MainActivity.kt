@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         // Playlist 메뉴 구현 및 Recycler View 연결
         val recyclerViewMyPlaylists = MyPlaylistsRecyclerViewAdapter(mp.dataset)  // 어댑터 만들기(플레이리스트에 들어갈 내용들의 집합)
-        val recyclerViewMyPlaylist = binding.recyclerPlaylists      // recycler view 만들기, 바인딩으로 연결할 데이터 = RecyclerView의 ID
-        recyclerViewMyPlaylist.adapter = recyclerViewMyPlaylists                        // rv = 어댑터 연결
+        val recyclerViewMyPlaylist = binding.recyclerPlaylists                    // recycler view 만들기, 바인딩으로 연결할 데이터 = RecyclerView의 ID
+        recyclerViewMyPlaylist.adapter = recyclerViewMyPlaylists                  // rv = 어댑터 연결
 
         // Mix & Recommends 메뉴 구현 및 Recycler View 연결
         val recyclerViewMixNRecommends = MixNRecommendsRecyclerViewAdapter(mnr.dataset)
@@ -84,53 +84,3 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 }
-
-
-//class MainActivity : AppCompatActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-
-//        findViewById<Toolbar>(R.id.toolbar).apply {
-//            setSupportActionBar(this)
-//        }
-//    private fun call() {
-//        // 권한 확인
-//        if (ContextCompat.checkSelfPermission(
-//                this,
-//                android.Manifest.permission.CALL_PHONE
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(android.Manifest.permission.CALL_PHONE),
-//                REQUEST_CALL
-//            )
-//        } else {
-//            // Intent 설정
-//            val callIntent = Intent(Intent.ACTION_CALL)
-//            callIntent.data = Uri.parse("tel:012345567")
-//            startActivity(callIntent)
-//        }
-//    }
-//
-//    // 권한 요청 결과 처리
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        if (requestCode == REQUEST_CALL) {
-//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                call() // 권한이 허용된 후 전화 걸기
-//            } else {
-//                Toast.makeText(applicationContext, "전화 걸기 권한이 없습니다.", Toast.LENGTH_LONG).show()
-//            }
-//        }
-//    }
-//
-//    companion object {
-//        private const val REQUEST_CALL = 1
-//    }
-//}
