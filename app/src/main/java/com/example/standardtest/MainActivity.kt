@@ -8,31 +8,37 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.standardtest.databinding.ActivityMainBinding
+import com.example.standardtest.objects.Adapters.mmp
+import com.example.standardtest.objects.Adapters.mnr
+import com.example.standardtest.objects.Adapters.mp
 import com.example.standardtest.objects.Uris
 import com.example.standardtest.recycleradapters.MixsNRecommendsRecyclerViewAdapter
+import com.example.standardtest.recycleradapters.MyMusicsPlaylistsRecyclerViewAdapter
 import com.example.standardtest.recycleradapters.MyPlaylistsRecyclerViewAdapter
-import com.example.standardtest.recyclerdatas.MixsNRecommends
-import com.example.standardtest.recyclerdatas.MyPlaylists
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val mp = MyPlaylists()
-    private val mnr = MixsNRecommends()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        var viewMain = binding.root
+        val viewMain = binding.root
         setContentView(viewMain)
 
-
+        // Playlist 메뉴 구현 및 Recycler View 연결
         val recyclerViewMyPlaylists = MyPlaylistsRecyclerViewAdapter(mp.dataset)  // 어댑터 만들기(플레이리스트에 들어갈 내용들의 집합)
         val recyclerViewMyPlaylist = binding.recyclerPlaylists      // recycler view 만들기, 바인딩으로 연결할 데이터 = RecyclerView의 ID
         recyclerViewMyPlaylist.adapter = recyclerViewMyPlaylists                        // rv = 어댑터 연결
 
+        // Mix & Recommends 메뉴 구현 및 Recycler View 연결
         val recyclerViewMixsNRecommends = MixsNRecommendsRecyclerViewAdapter(mnr.dataset)
         val recyclerViewMixNRecommend = binding.recyclerMixNRecommend
         recyclerViewMixNRecommend.adapter = recyclerViewMixsNRecommends
+
+        // My Musics(나만의 음악) 메뉴 구현 및 Recycler View 연결
+        val rvMyMusicsPlaylists = MyMusicsPlaylistsRecyclerViewAdapter(mmp.dataset)
+        val rvMyMusics = binding.recyclerMyMusics
+        rvMyMusics.adapter = rvMyMusicsPlaylists
     }
 
 
