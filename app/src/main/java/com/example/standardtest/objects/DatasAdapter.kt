@@ -5,7 +5,7 @@ import com.example.standardtest.recyclerdatas.Mixslists
 import com.example.standardtest.recyclerdatas.MyMusicsPlaylists
 import com.example.standardtest.recyclerdatas.MyPlaylists
 
-object Adapters {
+object DatasAdapter {
     val mp = MyPlaylists()
     val mnr = MixNRecommends()
     val mmp = MyMusicsPlaylists()
